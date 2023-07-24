@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CityResource\Pages;
 use App\Filament\Resources\CityResource\RelationManagers;
+use App\Filament\Resources\CountryResource\RelationManagers\EmployeesRelationManager;
 use App\Models\City;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -33,7 +34,7 @@ class CityResource extends Resource
                     ->schema([
                         Select::make('state_id')
                             ->relationship('state', 'name')
-                            ->require(),
+                            ->required(),
                         TextInput::make('name')
                             ->required()
                             ->maxLength(255)
@@ -64,7 +65,7 @@ class CityResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            EmployeesRelationManager::class
         ];
     }
 
